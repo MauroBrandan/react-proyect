@@ -1,17 +1,18 @@
 import './App.css';
-import { Grid, Header } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
+import { Header } from './components/Header';
+import { Search } from './components/Search';
+import { ToDoList } from './components/ToDoList';
 
 function App() {
   return (
   <>
-    <Header as='h1' color='teal'>
-      My to do list
-    </Header>
-    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-      <Grid.Column style={{ maxWidth: 550 }}>
+    <Header />
+    <Grid textAlign='center' style={{ height: '55vh' }} verticalAlign='middle'>
+      <Grid.Column style={{ width: "80%", maxWidth: 500 }}>
       {/* Progress Bar */}        
-      {/* Search */}        
-      {/* To do List */}      
+      <Search />       
+      <ToDoList />    
       </Grid.Column>
     </Grid>
     {/* Add To do */} 
