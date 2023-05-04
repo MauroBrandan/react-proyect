@@ -1,6 +1,12 @@
 import React from 'react'
 import { Input } from 'semantic-ui-react'
 
-export const Search = () => (
-    <Input fluid icon='search' placeholder='Search...' />
-)
+export const Search = ({ onSearch }) => {
+	const handleChange = (e) => {
+		onSearch(e.target.value)
+	}
+
+	return (
+		<Input fluid icon='search' placeholder='Search...' onChange={handleChange} />
+	)
+}
