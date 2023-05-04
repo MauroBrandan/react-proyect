@@ -2,18 +2,15 @@ import React from 'react'
 import { List } from 'semantic-ui-react'
 
 import { ToDo } from './ToDo'
+import { useToDos } from '../hooks/useToDos'
 
-export const ToDoList = ({ list, checkToDo, deleteToDo }) => {
+export const ToDoList = () => {
+	const { searchedToDos } = useToDos()
+
 	return (
 		<List verticalAlign='middle' size='huge' divided relaxed>
-			{list.map(({ title, status }) => (
-				<ToDo
-					key={title}
-					todoTitle={title}
-					todoStatus={status}
-					onCheck={() => checkToDo(title)}
-					onDelete={() => deleteToDo(title)}
-				/>
+			{searchedToDos.map(({ title, status }) => (
+				<ToDo key={title} todoTitle={title} todoStatus={status} />
 			))}
 		</List>
 	)

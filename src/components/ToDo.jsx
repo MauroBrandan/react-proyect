@@ -1,15 +1,19 @@
 import React from 'react'
 import { List } from 'semantic-ui-react'
 
-export const ToDo = ({ todoTitle, todoStatus, onCheck, onDelete }) => {
+import { useToDos } from '../hooks/useToDos'
+
+export const ToDo = ({ todoTitle, todoStatus }) => {
+	const { checkToDo, deleteToDo } = useToDos()
+
 	return (
 		<List.Item>
 			<List.Icon
-				name={`check square ${!todoStatus && 'outline'}`}
+				name={`check ${!todoStatus ? 'square outline' : 'square'}`}
 				color='green'
 				size='large'
 				style={{ cursor: 'pointer' }}
-				onClick={onCheck}
+				onClick={() => checkToDo(todoTitle)}
 			/>
 			<List.Content>{todoTitle}</List.Content>
 			<List.Icon
@@ -17,7 +21,7 @@ export const ToDo = ({ todoTitle, todoStatus, onCheck, onDelete }) => {
 				color='red'
 				size='small'
 				style={{ cursor: 'pointer' }}
-				onClick={onDelete}
+				onClick={() => deleteToDo(todoTitle)}
 			/>
 		</List.Item>
 	)

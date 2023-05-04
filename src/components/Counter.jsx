@@ -1,13 +1,14 @@
 import React from 'react'
 import { Progress } from 'semantic-ui-react'
 
-export const Counter = ({ list }) => {
-	const completedToDos = list.filter((todo) => todo.status == true).length
-	const percent = (completedToDos * 100) / list.length
+import { useToDos } from '../hooks/useToDos'
+
+export const Counter = () => {
+	const { totalTodos, completedToDos, percent } = useToDos()
 
 	return (
 		<section style={{ fontSize: '2rem' }}>
-			<p>{`Hoy completaste ${completedToDos} de ${list.length} ToDo's`}</p>
+			<p>{`Hoy completaste ${completedToDos} de ${totalTodos} ToDo's`}</p>
 			<Progress percent={percent} indicating />
 		</section>
 	)
