@@ -3,16 +3,18 @@ import { List } from 'semantic-ui-react'
 
 import { ToDo } from './ToDo'
 
-const toDos = [
-	{ title: 'Wake Up', status: true },
-	{ title: 'Read', status: false },
-	{ title: 'Coffee', status: true },
-]
-
-export const ToDoList = () => (
-	<List verticalAlign='middle' size='huge' divided relaxed>
-		{toDos.map(({ title, status }) => (
-			<ToDo key={title} todoTitle={title} todoStatus={status} />
-		))}
-	</List>
-)
+export const ToDoList = ({ list, checkToDo, deleteToDo }) => {
+	return (
+		<List verticalAlign='middle' size='huge' divided relaxed>
+			{list.map(({ title, status }) => (
+				<ToDo
+					key={title}
+					todoTitle={title}
+					todoStatus={status}
+					onCheck={() => checkToDo(title)}
+					onDelete={() => deleteToDo(title)}
+				/>
+			))}
+		</List>
+	)
+}

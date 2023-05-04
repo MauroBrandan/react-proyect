@@ -1,29 +1,23 @@
 import React from 'react'
 import { List } from 'semantic-ui-react'
 
-export const ToDo = ({ todoTitle, todoStatus }) => {
+export const ToDo = ({ todoTitle, todoStatus, onCheck, onDelete }) => {
 	return (
 		<List.Item>
-			{todoStatus ? (
-				<List.Icon
-					name='check square'
-					color='green'
-					size='large'
-					style={{ cursor: 'pointer' }}
-				/>
-			) : (
-				<List.Icon
-					name='check square outline'
-					size='large'
-					style={{ cursor: 'pointer' }}
-				/>
-			)}
+			<List.Icon
+				name={`check square ${!todoStatus && 'outline'}`}
+				color='green'
+				size='large'
+				style={{ cursor: 'pointer' }}
+				onClick={onCheck}
+			/>
 			<List.Content>{todoTitle}</List.Content>
 			<List.Icon
 				name='delete'
 				color='red'
 				size='small'
 				style={{ cursor: 'pointer' }}
+				onClick={onDelete}
 			/>
 		</List.Item>
 	)
