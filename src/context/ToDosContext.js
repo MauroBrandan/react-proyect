@@ -12,7 +12,11 @@ export const ToDosProvider = ({ children }) => {
 	const percent = (completedToDos * 100) / totalTodos
 
 	const addToDo = (value) => {
-		const newToDo = { title: value, status: false }
+		const newToDo = {
+			id: Math.random().toString(35),
+			title: value,
+			status: false,
+		}
 		const newToDos = toDos.concat(newToDo)
 		saveToDos(newToDos)
 		setSearchedToDos(newToDos)
@@ -26,15 +30,15 @@ export const ToDosProvider = ({ children }) => {
 		setSearchedToDos(newToDos)
 	}
 
-	const checkToDo = (newToDo) => {
-		const toDoIndex = toDos.findIndex((todo) => todo.title === newToDo)
+	const checkToDo = (id) => {
+		const toDoIndex = toDos.findIndex((todo) => todo.id === id)
 		const newToDos = [...toDos]
 		newToDos[toDoIndex].status = !newToDos[toDoIndex].status
 		saveToDos(newToDos)
 	}
 
-	const deleteToDo = (deletedToDo) => {
-		const newToDos = toDos.filter((todo) => todo.title !== deletedToDo)
+	const deleteToDo = (id) => {
+		const newToDos = toDos.filter((todo) => todo.id !== id)
 		saveToDos(newToDos)
 		setSearchedToDos(newToDos)
 	}

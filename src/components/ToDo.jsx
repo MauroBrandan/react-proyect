@@ -3,7 +3,7 @@ import { List } from 'semantic-ui-react'
 
 import { useToDos } from '../hooks/useToDos'
 
-export const ToDo = ({ todoTitle, todoStatus }) => {
+export const ToDo = ({ id, todoTitle, todoStatus }) => {
 	const { checkToDo, deleteToDo } = useToDos()
 
 	return (
@@ -13,7 +13,7 @@ export const ToDo = ({ todoTitle, todoStatus }) => {
 				color='green'
 				size='large'
 				style={{ cursor: 'pointer' }}
-				onClick={() => checkToDo(todoTitle)}
+				onClick={() => checkToDo(id)}
 			/>
 			<List.Content>{todoTitle}</List.Content>
 			<List.Icon
@@ -21,7 +21,7 @@ export const ToDo = ({ todoTitle, todoStatus }) => {
 				color='red'
 				size='small'
 				style={{ cursor: 'pointer' }}
-				onClick={() => deleteToDo(todoTitle)}
+				onClick={() => deleteToDo(id)}
 			/>
 		</List.Item>
 	)

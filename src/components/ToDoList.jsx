@@ -9,8 +9,8 @@ export const ToDoList = () => {
 
 	return (
 		<List verticalAlign='middle' size='huge' divided relaxed>
-			{searchedToDos.map(({ title, status }) => (
-				<ToDo key={title} todoTitle={title} todoStatus={status} />
+			{searchedToDos.map(({ id, title, status }) => (
+				<ToDo key={id} id={id} todoTitle={title} todoStatus={status} />
 			))}
 		</List>
 	)
