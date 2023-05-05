@@ -2,7 +2,7 @@ import { Layout } from './components/Layout'
 import { Counter } from './components/Counter.jsx'
 import { Search } from './components/Search'
 import { ToDoList } from './components/ToDoList'
-import { AddToDo } from './components/AddToDo'
+import { AddToDoButton } from './components/AddToDoButton'
 
 function App() {
 	return (
@@ -10,7 +10,7 @@ function App() {
 			<Counter />
 			<Search />
 			<ToDoList />
-			<AddToDo />
+			<AddToDoButton />
 		</Layout>
 	)
 }

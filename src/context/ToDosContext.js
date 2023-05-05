@@ -11,6 +11,13 @@ export const ToDosProvider = ({ children }) => {
 	const completedToDos = toDos.filter((todo) => todo.status === true).length
 	const percent = (completedToDos * 100) / totalTodos
 
+	const addToDo = (value) => {
+		const newToDo = { title: value, status: false }
+		const newToDos = toDos.concat(newToDo)
+		saveToDos(newToDos)
+		setSearchedToDos(newToDos)
+	}
+
 	const searchToDos = (value) => {
 		const formattedValue = value.toLowerCase()
 		const newToDos = toDos.filter((todo) =>
@@ -39,6 +46,7 @@ export const ToDosProvider = ({ children }) => {
 				totalTodos,
 				completedToDos,
 				percent,
+				addToDo,
 				searchToDos,
 				checkToDo,
 				deleteToDo,
